@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kramberry</title>
+  <meta name="description" content="Kramberry's projects: RuneLite plugins, Python tools and full-stack web apps, public and private." />
+  <meta name="theme-color" content="#2b2621" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Pixelify+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="top-name" href="#main" id="top-name"></a>
+    <nav class="top-links" id="top-links" aria-label="Contact"></nav>
+  </header>
+
+  <main id="main">
+    <section class="intro">
+      <h1 id="name"></h1>
+      <p class="intro-text" id="intro"></p>
+      <p class="intro-status" id="status"></p>
+    </section>
+
+    <section class="quests" aria-labelledby="quests-title">
+      <div class="quest-tab" id="quest-tab">
+        <h2 class="quest-tab-title" id="quests-title">Quest list</h2>
+        <ul class="quest-list" id="quest-list"></ul>
+        <p class="quest-count" id="quest-count"></p>
+      </div>
+      <article class="journal" id="journal" aria-live="polite"></article>
+    </section>
+
+    <section class="block" aria-labelledby="stack-title">
+      <h2 id="stack-title">What I work with</h2>
+      <dl class="pairs" id="stack"></dl>
+    </section>
+
+    <section class="block" aria-labelledby="life-title">
+      <h2 id="life-title">Outside of work</h2>
+      <dl class="pairs" id="interests"></dl>
+      <p class="training" id="training"></p>
+    </section>
+
+    <section class="block contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Get in touch</h2>
+      <p>If you're hiring, have a project in mind, or want a walkthrough of one of the private repos, I'd like to hear from you.</p>
+      <p class="contact-links" id="contact-links"></p>
+    </section>
+  </main>
+
+  <footer class="foot" id="foot"></footer>
+
+  <script src="data/profile.js"></script>
+  <script src="data/github.js" onerror="window.GITHUB_STATS = null"></script>
+  <script src="app.js"></script>
+</body>
+</html>
