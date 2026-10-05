@@ -2,12 +2,13 @@
 // your logged-in GitHub CLI, and writes them to data/github.js.
 //
 // Only metadata is exported: commit count, languages, last-updated date.
+// Stats are keyed by project name, so private repo names are never published.
 // No code, no tokens, and no repos you haven't listed in profile.js.
 //
 // Usage:  node scripts/sync-github.mjs
 
 import { execFileSync } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 
@@ -17,6 +18,11 @@ const sandbox = { window: {} };
 vm.runInNewContext(readFileSync(root + "data/profile.js", "utf8"), sandbox);
 const { github, projects } = sandbox.window.PORTFOLIO;
 const owner = github.replace(/\/+$/, "").split("/").pop();
+
+// Optional, gitignored: { "Project name": "repo-name" } for repos whose names shouldn't be published.
+const privateRepos = existsSync(root + "private/repos.json")
+  ? JSON.parse(readFileSync(root + "private/repos.json", "utf8"))
+  : {};
 
 const gh = (path, extra = []) =>
   execFileSync("gh", ["api", path, ...extra], { encoding: "utf8" });
@@ -29,20 +35,21 @@ function commitCount(repo) {
 }
 
 const out = {};
-for (const p of projects) {
+for (const project of projects) {
+  const p = { ...project, repo: project.repo || privateRepos[project.name] };
   if (!p.repo || p.show === false) continue;
   try {
     const meta = JSON.parse(gh(`repos/${owner}/${p.repo}`));
-    out[p.repo] = {
+    out[p.name] = {
       commits: commitCount(p.repo),
       languages: JSON.parse(gh(`repos/${owner}/${p.repo}/languages`)),
       createdAt: meta.created_at,
       pushedAt: meta.pushed_at,
       stars: meta.stargazers_count,
     };
-    console.log(`✓ ${p.repo}: ${out[p.repo].commits} commits`);
+    console.log(`✓ ${p.name}: ${out[p.name].commits} commits`);
   } catch (err) {
-    console.warn(`✗ ${p.repo}: ${err.message.split("\n")[0]}`);
+    console.warn(`✗ ${p.name}: ${err.message.split("\n")[0]}`);
   }
 }
 

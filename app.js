@@ -5,7 +5,7 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const projects = P.projects.filter((p) => p.show !== false);
-  const stats = (p) => (G && p.repo && G.repos[p.repo]) || null;
+  const stats = (p) => (G && G.repos[p.name]) || null;
   const monthYear = (iso) => new Date(iso).toLocaleDateString("en-US", { month: "long", year: "numeric" });
   const listText = (items) =>
     items.length < 2 ? items.join("") : items.slice(0, -1).join(", ") + " and " + items[items.length - 1];

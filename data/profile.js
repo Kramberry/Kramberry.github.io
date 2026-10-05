@@ -24,8 +24,26 @@ window.PORTFOLIO = {
   // status: "complete" (green in the quest list) | "in-progress" (yellow)
   // done: steps shown struck through, like a finished quest step
   // todo: steps still ahead
-  // repo: GitHub repo name, used by scripts/sync-github.mjs for commit counts and dates
+  // repo: GitHub repo name, used by scripts/sync-github.mjs for commit counts and dates.
+  //       To keep a repo name off the public site, leave it empty and map the project
+  //       name to the repo in private/repos.json (gitignored).
   projects: [
+    {
+      show: true,
+      name: "RuneLite Encounter Overlays",
+      repo: "", // repo name kept in private/repos.json so it isn't published
+      private: true,
+      status: "complete",
+      kind: "A collection of RuneLite plugins, written in Java",
+      summary: "A set of more than twenty RuneLite plugins that turn live game data into clear, configurable on-screen overlays for Old School RuneScape's combat encounters.",
+      done: [
+        "Track NPCs, projectiles and animations through RuneLite's event API",
+        "Build a shared projectile-tracking engine and reuse it across plugins",
+        "Give every plugin its own config panel so each overlay can be tuned",
+      ],
+      stack: ["Java", "Gradle", "RuneLite API"],
+      note: "My largest codebase so far: over two hundred Java files.",
+    },
     {
       show: true,
       name: "ShiftDesk",

@@ -19,6 +19,8 @@ node scripts/sync-github.mjs
 
 This uses your logged-in `gh` CLI to fetch commit counts, languages and dates for the repos listed in `profile.js`, then writes them to `data/github.js`. Only that metadata goes into the site: no code, no tokens, and no repos you haven't listed. Run it before each deploy.
 
+To show stats for a private repo without publishing its name, leave `repo` empty in `profile.js` and add `{ "Project name": "repo-name" }` to `private/repos.json`, which is gitignored.
+
 ## Deploying
 
 Push to a public GitHub repo and turn on **Settings → Pages → Deploy from branch (main, root)**. Any static host works (Netlify, Vercel, Cloudflare Pages).
