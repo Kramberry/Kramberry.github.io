@@ -3,7 +3,7 @@
 // Set `show: false` to hide a project entirely.
 
 window.PORTFOLIO = {
-  name: "Kramberry",
+  name: "Kram",
   intro: "I build tools for the things I care about: games, small businesses, and the people who use them. Most of my projects start because something I use every day is slower or clunkier than it should be.",
   status: "Open to new roles and freelance work.",
   github: "https://github.com/Kramberry",
