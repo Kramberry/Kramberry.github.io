@@ -121,6 +121,18 @@ h1 {
 .journal h3 { margin: 0; font-size: 36px; line-height: 1.1; font-weight: 700; letter-spacing: -.01em; }
 .journal .kind { margin: 6px 0 0; color: var(--ink-soft); font-style: italic; }
 .journal .summary { max-width: var(--measure); margin: 22px 0 0; font-size: 19px; }
+/* Screenshots pinned into the journal page */
+.shots { display: grid; gap: 22px; margin: 26px 0 0; }
+.shot { margin: 0; }
+.shot a { display: block; line-height: 0; }
+.shot img {
+  width: 100%; height: auto;
+  border: 1px solid var(--parchment-edge); border-radius: 2px;
+  box-shadow: 0 6px 16px rgba(60, 40, 10, .22);
+  background: #fff;
+}
+.shot a:hover img { border-color: var(--ink-soft); }
+.shot figcaption { margin-top: 8px; font-size: 15px; font-style: italic; color: var(--ink-soft); }
 .journal h4 { margin: 28px 0 8px; font-size: 18px; font-weight: 700; }
 .steps { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
 .steps li { margin: 4px 0; }

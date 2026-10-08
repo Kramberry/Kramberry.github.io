@@ -13,7 +13,7 @@ window.PORTFOLIO = {
   // "What I work with": plain list, no levels.
   stack: [
     { name: "Java", note: "RuneLite plugins: overlays, game-state tracking, event-driven code." },
-    { name: "Python", note: "Flask and Streamlit apps, pandas, Windows executables with PyInstaller." },
+    { name: "Python", note: "Flask and Streamlit apps, pandas, Excel and PDF generation, Windows executables with PyInstaller." },
     { name: "JavaScript", note: "Next.js App Router, React components, API routes." },
     { name: "HTML and CSS", note: "Tailwind or hand-written design systems, responsive layouts, print-ready styling." },
     { name: "APIs", note: "REST clients, OAuth 2.0 with PKCE, the OSRS Wiki prices API." },
@@ -52,14 +52,26 @@ window.PORTFOLIO = {
       status: "complete",
       kind: "A desktop scheduling app, written in Python",
       summary: "A weekly staff-schedule builder for a small print shop, laid out like a shop-floor planning board. It runs locally, needs no internet, and exports to Excel and PDF in one click.",
+      // Optional screenshots, shown under the summary. Paths are relative to the site root.
+      images: [
+        { src: "images/shiftdesk-schedule.webp", width: 1500, height: 1100,
+          alt: "The ShiftDesk schedule board: a week of shifts for six people, with time pickers, colour-coded role tags, yellow day-off cells and weekly hour totals.",
+          caption: "The schedule board. Hours update as you type, with unpaid breaks taken out." },
+        { src: "images/shiftdesk-excel.png", width: 1058, height: 515,
+          alt: "The same week exported to Excel: colour-coded day columns with dates, PTO cells, a Total Hours column and a team total row.",
+          caption: "The same week exported to Excel, with real-number totals and a live team total." },
+      ],
       done: [
         "Package it as a Windows executable so there's nothing to install",
         "Calculate hours automatically and handle PTO and multi-role shifts",
         "Remember last week's schedule between sessions",
         "Plan several weeks at once in tabs and copy the previous week in one click",
         "Redesign it as a planning board with colour-coded roles, in plain CSS with no framework",
+        "Take unpaid breaks out of hours, with one rule shared by the screen, print, Excel and PDF",
+        "Let each shop choose its work days, weekends included, without losing hidden shifts",
+        "Export Excel sheets with real-number totals, a live team total and print-ready page setup",
       ],
-      stack: ["Python", "Flask", "HTML", "CSS", "PyInstaller"],
+      stack: ["Python", "Flask", "openpyxl", "ReportLab", "HTML", "CSS", "PyInstaller"],
       note: "Built so a manager would never have to fight a spreadsheet again.",
     },
     {

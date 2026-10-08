@@ -52,10 +52,20 @@
         : `<a href="${esc(P.github.replace(/\/$/, ""))}/${esc(p.repo)}" target="_blank" rel="noopener">Read the source on GitHub</a>.`
     );
 
+    // Screenshots open full size in a new tab; width/height stop the page jumping while they load.
+    const shots = (p.images || [])
+      .map((img) => `<figure class="shot">
+          <a href="${esc(img.src)}" target="_blank" rel="noopener"><img src="${esc(img.src)}" alt="${esc(img.alt)}"
+            ${img.width ? `width="${+img.width}" height="${+img.height}"` : ""} loading="lazy" decoding="async"></a>
+          ${img.caption ? `<figcaption>${esc(img.caption)}</figcaption>` : ""}
+        </figure>`)
+      .join("");
+
     journal.innerHTML = `
       <h3>${esc(p.name)}</h3>
       <p class="kind">${esc(p.kind)}</p>
       <p class="summary">${esc(p.summary)}</p>
+      ${shots ? `<div class="shots">${shots}</div>` : ""}
       <h4>${p.status === "complete" ? "Quest complete" : "Quest in progress"}</h4>
       <ul class="steps">${steps}</ul>
       <h4>Built with</h4>

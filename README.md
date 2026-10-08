@@ -10,6 +10,7 @@ All content lives in [data/profile.js](data/profile.js): intro, projects, stack 
 - `done` steps appear struck through in the journal, like finished quest steps. `todo` steps appear in blue.
 - `private: true` shows a lock and replaces the source link with an offer to walk through the code.
 - `show: false` hides a project completely.
+- `images` adds screenshots under a project's summary: `{ src, width, height, alt, caption }`, with the files in `images/`. Each one opens full size when clicked. Use made-up data in screenshots, never real names.
 
 ## Syncing GitHub stats (including private repos)
 
