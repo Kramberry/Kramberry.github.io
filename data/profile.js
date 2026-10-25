@@ -12,7 +12,7 @@ window.PORTFOLIO = {
 
   // "What I work with": plain list, no levels.
   stack: [
-    { name: "Java", note: "RuneLite plugins: overlays, game-state tracking, event-driven code." },
+    { name: "Java", note: "Plugins and event-driven code." },
     { name: "Python", note: "Flask and Streamlit apps, pandas, Excel and PDF generation, Windows executables with PyInstaller." },
     { name: "JavaScript", note: "Next.js App Router, React components, API routes." },
     { name: "HTML and CSS", note: "Tailwind or hand-written design systems, responsive layouts, print-ready styling." },
@@ -30,19 +30,41 @@ window.PORTFOLIO = {
   projects: [
     {
       show: true,
-      name: "RuneLite Encounter Overlays",
+      name: "Plugins",
       repo: "", // repo name kept in private/repos.json so it isn't published
       private: true,
       status: "complete",
-      kind: "A collection of RuneLite plugins, written in Java",
-      summary: "A set of more than twenty RuneLite plugins that turn live game data into clear, configurable on-screen overlays for Old School RuneScape's combat encounters.",
+      kind: "A collection of plugins, written in Java",
+      summary: "A private selection of plugins that help with everyday use.",
       done: [
-        "Track NPCs, projectiles and animations through RuneLite's event API",
-        "Build a shared projectile-tracking engine and reuse it across plugins",
-        "Give every plugin its own config panel so each overlay can be tuned",
+        "Build and maintain them over time",
       ],
-      stack: ["Java", "Gradle", "RuneLite API"],
+      stack: ["Java", "Gradle", "API"],
       note: "My largest codebase so far: over two hundred Java files.",
+    },
+    {
+      show: true,
+      name: "Fancy Hitsplats",
+      repo: "fancy-hitsplats",
+      private: false,
+      status: "in-progress",
+      kind: "A RuneLite plugin, written in Java",
+      summary: "Damage numbers in the style of MapleStory or World of Warcraft, drawn on top of the game's own hitsplats.",
+      images: [
+        { src: "images/fancy-hitsplats.webp", width: 1028, height: 748,
+          alt: "A Giant Mole being hit for 27: the number is drawn in chunky orange MapleStory style over a large red hitsplat, with three pictures fanning out above it.",
+          caption: "MapleStory style, with the optional image burst on." },
+      ],
+      done: [
+        "Line the numbers up with the game's own hitsplat slots and heights",
+        "Offer two styles, MapleStory and World of Warcraft, with pop-in and crit effects",
+        "Add an optional image burst that loads pictures in the background so the game never stalls",
+      ],
+      todo: [
+        "Get it approved on the RuneLite Plugin Hub",
+      ],
+      stack: ["Java", "RuneLite API", "Java 2D"],
+      note: "Every hit deserves a little celebration.",
     },
     {
       show: true,
